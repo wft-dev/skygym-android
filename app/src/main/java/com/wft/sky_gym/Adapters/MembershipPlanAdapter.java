@@ -11,9 +11,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wft.sky_gym.Admin.AddTrainer;
 import com.wft.sky_gym.Admin.MemberAttendance;
 import com.wft.sky_gym.Admin.MemberHelper;
 import com.wft.sky_gym.Admin.MembershipHelper;
+import com.wft.sky_gym.Admin.TrainerHelper;
+import com.wft.sky_gym.Admin.ViewMembership;
 import com.wft.sky_gym.R;
 
 import java.util.ArrayList;
@@ -39,7 +42,7 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
 
 
     @Override
-    public void onBindViewHolder(@NonNull MembershipPlanAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MembershipPlanAdapter.MyViewHolder holder, final int position) {
 
         MembershipHelper model=membershipHelperArrayList.get(position);
         if (model.getTitle()==null){
@@ -77,6 +80,20 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
 
             holder.price.setText(model.getAmount());
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MembershipHelper membershipHelper = membershipHelperArrayList.get(position);
+                Intent intent = new Intent(context, ViewMembership.class);
+                intent.putExtra("title",membershipHelper.getTitle());
+                intent.putExtra("detail",membershipHelper.getDescription());
+                intent.putExtra("amount",membershipHelper.getAmount());
+                intent.putExtra("sdate",membershipHelper.getSdate());
+                intent.putExtra("edate",membershipHelper.getEdate());
+                context.startActivity(intent);
+            }
+        });
+
 
     }
 

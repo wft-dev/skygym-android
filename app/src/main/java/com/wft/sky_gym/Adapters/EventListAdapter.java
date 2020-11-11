@@ -1,6 +1,7 @@
 package com.wft.sky_gym.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wft.sky_gym.Admin.AddEvent;
+import com.wft.sky_gym.Admin.AddTrainer;
 import com.wft.sky_gym.Admin.EventHelper;
 import com.wft.sky_gym.Admin.MembershipHelper;
+import com.wft.sky_gym.Admin.TrainerHelper;
 import com.wft.sky_gym.R;
 
 import java.util.ArrayList;
@@ -37,7 +41,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 
 
     @Override
-    public void onBindViewHolder(@NonNull EventListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull EventListAdapter.MyViewHolder holder, final int position) {
 
         EventHelper model=eventHelperArrayList.get(position);
         if (model.getTitle()==null){
@@ -75,6 +79,21 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 
             holder.date.setText(model.getDate());
         }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                EventHelper eventHelper = eventHelperArrayList.get(position);
+                Intent intent = new Intent(context, AddEvent.class);
+                intent.putExtra("title",eventHelper.getTitle());
+                intent.putExtra("detail",eventHelper.getDetail());
+                intent.putExtra("date",eventHelper.getDate());
+                intent.putExtra("stime",eventHelper.getSdate());
+                intent.putExtra("etime",eventHelper.getEdate());
+
+                context.startActivity(intent);
+
+            }
+        });
 
     }
 
@@ -94,8 +113,6 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
             stime=itemView.findViewById(R.id.stime);
             etime=itemView.findViewById(R.id.etime);
             date=itemView.findViewById(R.id.date);
-
-
         }
     }
 }

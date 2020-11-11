@@ -34,7 +34,7 @@ public class NewMemberAdapter extends RecyclerView.Adapter<NewMemberAdapter.MyVi
     @Override
     public NewMemberAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.memberlistrecycler, parent, false);
-        NewMemberAdapter.MyViewHolder vh = new NewMemberAdapter.MyViewHolder(mView,context,memberHelperList);
+        NewMemberAdapter.MyViewHolder vh = new NewMemberAdapter.MyViewHolder(mView);
         return vh;
 
 
@@ -105,42 +105,21 @@ public class NewMemberAdapter extends RecyclerView.Adapter<NewMemberAdapter.MyVi
         return memberHelperList.size();
     }
 
-    class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    class MyViewHolder extends RecyclerView.ViewHolder{
 ImageView attendance;
         TextView memname,contact;
-Context context;
-ArrayList<MemberHelper>memberHelperArrayList;
 
-        public MyViewHolder(@NonNull View itemView,Context context,ArrayList<MemberHelper> memberHelperArrayList) {
+
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
-this.context=context;
-this.memberHelperArrayList=memberHelperArrayList;
+
+
             memname=itemView.findViewById(R.id.memname);
             contact=itemView.findViewById(R.id.contact);
             attendance=itemView.findViewById(R.id.attendance);
 
 
         }
-        @Override
-        public void onClick(View view) {
-            int position = getAdapterPosition();
-            MemberHelper memberHelper = memberHelperArrayList.get(position);
-            Intent intent = new Intent(context, AddMember.class);
-            intent.putExtra("membername",memberHelper.getMemname());
-            intent.putExtra("memberid",memberHelper.getMemid());
-            intent.putExtra("dateofjoin",memberHelper.getDoj());
-            intent.putExtra("dob",memberHelper.getDob());
-            intent.putExtra("gender",memberHelper.getGender());
-            intent.putExtra("pass",memberHelper.getPassword());
-            intent.putExtra("email",memberHelper.getEmail());
-            intent.putExtra("tname",memberHelper.getTname());
-            intent.putExtra("address",memberHelper.getAddress());
-            intent.putExtra("contact",memberHelper.getContact());
 
-            context.startActivity(intent);
-
-
-        }
     }
 }

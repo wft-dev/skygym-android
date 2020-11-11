@@ -36,6 +36,7 @@ Button update;
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
     SharedPrefs sharedPrefs;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +45,7 @@ Button update;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//enable full screen
         setContentView(R.layout.addevent);
         sharedPrefs = new SharedPrefs(AddEvent.this);
+        bindData();
 title=findViewById(R.id.title);
 details=findViewById(R.id.details);
 stime=findViewById(R.id.stime);
@@ -117,6 +119,14 @@ update=findViewById(R.id.update);
             }
         });
 
+    }
+
+    private void bindData() {
+        title.setText(data.getTitle());
+        details.setText(data.getDetail());
+        date.setText(data.getDate());
+        stime.setText(data.getSdate());
+        etime.setText(data.getEdate());
     }
 
 

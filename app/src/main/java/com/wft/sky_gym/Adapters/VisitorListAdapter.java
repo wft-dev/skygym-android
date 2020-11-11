@@ -1,6 +1,7 @@
 package com.wft.sky_gym.Adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.wft.sky_gym.Admin.AddTrainer;
+import com.wft.sky_gym.Admin.AddVisitor;
 import com.wft.sky_gym.Admin.TrainerHelper;
 import com.wft.sky_gym.Admin.VisitorHelper;
 import com.wft.sky_gym.R;
@@ -36,7 +39,7 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
 
 
     @Override
-    public void onBindViewHolder(@NonNull VisitorListAdapter.MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull VisitorListAdapter.MyViewHolder holder, final int position) {
 
         VisitorHelper model=visitorHelperArrayList.get(position);
         if (model.getFname()==null){
@@ -74,6 +77,27 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
 //
 //            holder.dov.setText(model.getDov());
 //        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                VisitorHelper visitorHelper = visitorHelperArrayList.get(position);
+                Intent intent = new Intent(context, AddVisitor.class);
+                intent.putExtra("fname",visitorHelper.getFname());
+                intent.putExtra("lname",visitorHelper.getLname());
+
+                intent.putExtra("email",visitorHelper.getEmail());
+                intent.putExtra("contact",visitorHelper.getContact());
+                intent.putExtra("dov",visitorHelper.getDov());
+                intent.putExtra("doj",visitorHelper.getDoj());
+                intent.putExtra("gender",visitorHelper.getGender());
+                intent.putExtra("add",visitorHelper.getAddress());
+                intent.putExtra("visits",visitorHelper.getVisits());
+                intent.putExtra("address",visitorHelper.getAddress());
+
+                context.startActivity(intent);
+
+            }
+        });
 
 
     }

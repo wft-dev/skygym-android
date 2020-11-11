@@ -84,7 +84,7 @@ salary=findViewById(R.id.salary);
         dob=findViewById(R.id.dob);
          attendance=findViewById(R.id.attendance);
        update=findViewById(R.id.update);
-
+bindData();
         camera=findViewById(R.id.camera);
         uploadid=findViewById(R.id.uploadid);
         attendance.setOnClickListener(new View.OnClickListener() {
@@ -231,6 +231,15 @@ salary=findViewById(R.id.salary);
         });
 
     }
+
+    private void bindData() {
+        fname.setText(data.getFname());
+        lname.setText(data.getLname());
+        gender.setText(data.getGender());
+        password.setText(data.get);,email,address,contact,id,salary,shifts,time
+
+    }
+
     private void hideKeyboard(View view) {
         InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         in.hideSoftInputFromWindow(view.getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
