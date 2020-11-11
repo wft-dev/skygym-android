@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Sky-Gym</string>
+    <string name="register"><u>Registration</u></string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">close navigation drawer</string>
+    <string-array name="gender"
+        size="20dp">
+        <item> Select</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+</resources>

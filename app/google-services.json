@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "809381254831",
+    "firebase_url": "https://sky-gym-fe7cc.firebaseio.com",
+    "project_id": "sky-gym-fe7cc",
+    "storage_bucket": "sky-gym-fe7cc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:809381254831:android:3975d4c43b3114a0e5265a",
+        "android_client_info": {
+          "package_name": "com.wft.sky_gym"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "809381254831-oke8icqnk2uqet918nigs40dkgledstm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCE0jljThIA5yjxDiJ2uF0NolaRBQ2m430"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "809381254831-oke8icqnk2uqet918nigs40dkgledstm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+
+
+    >
+
+
+<group>
+    <item
+        android:id="@+id/dashboard1"
+        android:title="Dashboard"
+
+
+        />
+</group>
+
+
+<group>
+            <item
+                android:id="@+id/member"
+                android:title="Member"
+
+                />
+</group>
+            <item
+                android:id="@+id/trainer"
+                android:title="Trainer"
+                />
+
+            <item
+                android:id="@+id/membershipplans"
+                android:title="Membership plans"
+                />
+
+            <item
+                android:id="@+id/visitors"
+                android:title="Visitors"
+               />
+
+
+
+            <item
+                android:id="@+id/profile"
+                android:title="Profile"
+               />
+
+            <item
+                android:id="@+id/events"
+                android:title="Events"
+                />
+
+            <item
+                android:id="@+id/logout"
+                android:title="logout"
+              />
+
+
+</menu>

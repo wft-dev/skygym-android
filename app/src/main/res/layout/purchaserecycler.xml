@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/border1"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="70dp"
+            android:layout_height="30dp"
+            android:background="@drawable/border1"
+            android:backgroundTint="@color/green"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:textColor="@color/white"
+            android:text="Active"
+            android:gravity="center"
+            android:layout_gravity="right"
+            android:layout_margin="15dp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Membership plan"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+               android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="2 months"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+          android:layout_marginTop="10dp">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Expiry Date"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="dd/mm/yyyy"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Amount"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="0"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Due Amount"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="0"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Paid Amount"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="0"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="15dp">
+            <TextView
+                android:layout_marginLeft="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Purchase Date"
+                android:textSize="18dp"
+                android:textStyle="bold"
+
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18dp"
+                android:textStyle="bold"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="15dp"
+                android:text="dd/mm/yyyy"
+                android:textColor="@color/black"
+                />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

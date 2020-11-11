@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.chauthai.swipereveallayout.SwipeRevealLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:mode="same_level"
+    android:background="@drawable/border1"
+    android:id="@+id/swipeLayout"
+    app:dragEdge="right">
+    <RelativeLayout
+        android:id="@+id/rl"
+        android:layout_width="100dp"
+        android:layout_height="130dp"
+        android:background="#FF0204">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:id="@+id/delete"
+            android:layout_height="50dp"
+            android:layout_marginLeft="60dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:backgroundTint="@color/white"/>
+
+
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="130dp"
+        android:background="@drawable/border1"
+        >
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:text="Workout_Mania"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"/>
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="190dp"
+            android:textSize="15dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="5dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/name"
+            android:text="description of the plan details and what
+it include in"/>
+        <TextView
+            android:id="@+id/sdate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:textColor="#EED811"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:text="Start Time"/>
+        <TextView
+            android:id="@+id/stime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sdate"
+            android:layout_marginLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="1:30pm"/>
+        <TextView
+            android:id="@+id/etime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/description"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@+id/sdate"
+            android:textColor="#EED811"
+            android:textSize="15dp"
+            android:textStyle="bold"
+            android:text="End Time"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etime"
+            android:layout_toRightOf="@+id/stime"
+            android:layout_marginLeft="75dp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:textSize="15dp"
+            android:text="3:30pm"/>
+        <TextView
+            android:id="@+id/date"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:background="@drawable/border1"
+            android:backgroundTint="#EED811"
+            android:text="dd/mm/yyyy"
+            android:textSize="18dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:padding="5dp"
+            android:gravity="center_horizontal" />
+
+
+    </RelativeLayout>
+</com.chauthai.swipereveallayout.SwipeRevealLayout>

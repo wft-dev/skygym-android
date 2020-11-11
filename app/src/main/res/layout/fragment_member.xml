@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:id="@+id/r1"
+    android:background="@drawable/border1"
+    android:backgroundTint="@color/grey"
+    android:layout_marginTop="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginLeft="20dp">
+    <TextView
+        android:id="@+id/tv1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by"
+        android:textSize="15dp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/sortby"
+        android:layout_toRightOf="@+id/tv1"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        />
+    <TextView
+        android:id="@+id/tv2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@+id/filter"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:layout_centerVertical="true"
+        android:text="Filter"
+        android:layout_marginRight="10dp"
+        />
+    <ImageView
+        android:id="@+id/filter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/filter1"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+
+        />
+
+
+</RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        
+        
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:layout_width="match_parent"
+            android:id="@+id/memberlistrecycler"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="100dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginLeft="10dp"/>
+        <RelativeLayout
+            android:id="@+id/filterdrop"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/border1"
+            android:backgroundTint="#ffffff">
+
+            <ImageView
+                android:id="@+id/close"
+                android:backgroundTint="@color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_margin="10dp"
+                android:layout_marginRight="5dp"
+                android:src="@drawable/ic_baseline_close_24" />
+            <TextView
+                android:id="@+id/filtertv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Filter"
+                android:layout_below="@+id/close"
+                android:layout_centerHorizontal="true"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                
+                />
+
+            <LinearLayout
+                android:id="@+id/l1"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/filtertv"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal"
+                android:background="@drawable/border1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="All member"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:id="@+id/l2"
+                android:layout_below="@id/l1"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+
+                android:orientation="horizontal"
+                android:background="@drawable/border1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Expired member"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/l3"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/l2"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal"
+                android:background="@drawable/border1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Checkin"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"/>
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/l4"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_below="@id/l3"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:orientation="horizontal"
+                android:background="@drawable/border1">
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:text="Chheckout"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"
+                    android:layout_marginLeft="15dp"
+                    android:layout_gravity="center"/>
+
+            </LinearLayout>
+            <Button
+                android:layout_below="@id/l4"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/border1"
+                android:backgroundTint="@color/black"
+                android:textColor="#ffffff"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="Apply"/>
+
+        </RelativeLayout>
+        <ImageView
+            android:id="@+id/add"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/add"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+
+            />
+    </RelativeLayout>
+
+</LinearLayout>

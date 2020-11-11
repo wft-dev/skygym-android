@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:background="@drawable/border1"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="35dp">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="25dp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user"
+                    android:layout_marginTop="20dp"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Member"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="00"
+                    android:textSize="24dp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+            <View
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:background="@color/grey"
+                />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+
+                android:layout_marginLeft="25dp">
+                <ImageView
+                    android:layout_marginTop="20dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/user"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Visitors"
+                    android:textSize="18dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="00"
+                    android:textSize="24dp"
+                    android:layout_margin="10dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold"/>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:background="@drawable/border1">
+            <ImageView
+                android:id="@+id/icon1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_paid"/>
+            <TextView
+                android:id="@+id/paid"
+                android:layout_toRightOf="@+id/icon1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:text="Paid member"/>
+            <TextView
+                android:layout_width="wrap_content"
+
+                android:layout_centerVertical="true"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:layout_margin="10dp"
+                android:textAlignment="center"
+                android:background="@drawable/border"
+                android:backgroundTint="@color/grey"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:hint="00"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/border1">
+            <ImageView
+                android:id="@+id/icon2"
+                android:layout_width="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_paid"/>
+            <TextView
+                android:id="@+id/expired"
+                android:layout_toRightOf="@+id/icon2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:text="Expired member"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:layout_margin="10dp"
+                android:textAlignment="center"
+                android:background="@drawable/border"
+                android:backgroundTint="@color/grey"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:hint="00"/>
+
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="20dp"
+            android:background="@drawable/border1">
+            <ImageView
+                android:id="@+id/icon3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/user_paid"/>
+            <TextView
+                android:id="@+id/trainers"
+                android:layout_toRightOf="@+id/icon3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:textStyle="bold"
+                android:textSize="18dp"
+                android:textColor="@color/black"
+                android:text="Trainers"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_height="60dp"
+                android:padding="15dp"
+                android:layout_margin="10dp"
+                android:textAlignment="center"
+                android:background="@drawable/border"
+                android:backgroundTint="@color/grey"
+                android:layout_alignParentRight="true"
+                android:textColor="@color/black"
+                android:textSize="25dp"
+                android:hint="00"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
