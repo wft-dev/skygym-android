@@ -1,6 +1,8 @@
 package com.wft.sky_gym.Admin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -19,8 +21,9 @@ import com.wft.sky_gym.SharedPrefs;
 
 public class ViewMember  extends AppCompatActivity {
     SharedPrefs sharedPrefs;
-    TextView name,contact, joindate;
+    TextView name,contact, joindate,addmship,cmmdetail,purchase,attend;
     FirebaseAuth auth;
+
    MemberHelper data;
     DatabaseReference refrence;
     FirebaseStorage storage;
@@ -39,16 +42,43 @@ public class ViewMember  extends AppCompatActivity {
 name=findViewById(R.id.name);
 contact=findViewById(R.id.contact);
 joindate=findViewById(R.id.joindate);
-
+addmship=findViewById(R.id.addmship);
+cmmdetail=findViewById(R.id.cmmdetail);
+attend=findViewById(R.id.attendance);
+purchase=findViewById(R.id.purchase);
         data = sharedPrefs.getMemberData();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("Member");
 bindData();
 
+addmship.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i= new Intent(ViewMember.this,ViewMembership.class);
+        startActivity(i);
+    }
+});
+        purchase.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(ViewMember.this,Purchasescreen.class);
+                startActivity(i);
+            }
+        });
+        cmmdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(ViewMember.this,CurrentMembershipDetail.class);
+                startActivity(i);
+            }
+        });
+attend.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
 
-
-
+    }
+});
     }
 
     private void bindData() {

@@ -45,7 +45,6 @@ Button update;
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//enable full screen
         setContentView(R.layout.addevent);
         sharedPrefs = new SharedPrefs(AddEvent.this);
-        bindData();
 title=findViewById(R.id.title);
 details=findViewById(R.id.details);
 stime=findViewById(R.id.stime);
@@ -57,6 +56,7 @@ update=findViewById(R.id.update);
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("Event");
+        bindData();
        update.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {

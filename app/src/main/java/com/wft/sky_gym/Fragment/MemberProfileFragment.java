@@ -91,7 +91,7 @@ public class MemberProfileFragment extends Fragment {
         mname= view.findViewById(R.id.membername);
         databaseReference=database.getReference("Member");
         member=new MemberHelper();
-        member = sharedPrefs.getMemberData();
+//        member = sharedPrefs.getMemberData();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         bindData();

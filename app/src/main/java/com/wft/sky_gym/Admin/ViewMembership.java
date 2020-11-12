@@ -58,7 +58,7 @@ public class ViewMembership extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("MembershipPlan");
-
+bindData();
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -92,6 +92,7 @@ public class ViewMembership extends AppCompatActivity {
                     refrence.child(name).setValue(membership);
                     SharedPrefs sharedPreferences = new SharedPrefs(ViewMembership.this);
                     sharedPreferences.createMembershipDataSession(membership);
+                    updateData();
                     Intent i= new Intent(ViewMembership.this, HomeAdmin.class);
                     startActivity(i);
 
@@ -139,4 +140,29 @@ public class ViewMembership extends AppCompatActivity {
         });
 
     }
+    private void updateData() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MembershipPlan");
+
+        final String title1 = title.getText().toString();
+        final String detail = details.getText().toString();
+        final String sdate = startdate.getText().toString();
+        final String edate = enddate.getText().toString();
+        final String Amount= amount.getText().toString();
+
+        MembershipHelper membershipHelper = new MembershipHelper(title1,Amount,detail,sdate,edate);
+        reference.child(title1).setValue(membershipHelper);
+        sharedPrefs.createMembershipDataSession(membershipHelper);
+
+    }
+
+    private void bindData() {
+        title.setText(data.getTitle());
+        details.setText(data.getDescription());
+        startdate.setText(data.getSdate());
+        enddate.setText(data.getEdate());
+        amount.setText(data.getAmount());
+
+    }
+
 }

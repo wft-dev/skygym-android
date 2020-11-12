@@ -167,6 +167,7 @@ bindData();
                     refrence.child(tid).setValue(trainer);
                     SharedPrefs sharedPreferences = new SharedPrefs(AddTrainer.this);
                     sharedPreferences.createTrainerDataSession(trainer);
+                    updateData();
                     Intent i= new Intent(AddTrainer.this, HomeAdmin.class);
                     startActivity(i);
 
@@ -176,6 +177,7 @@ bindData();
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent(AddTrainer.this, TrainerFragment.class);
                 startActivity(intent);
 
@@ -232,11 +234,39 @@ bindData();
 
     }
 
+    private void updateData() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Trainer");
+
+        final String firstname = fname.getText().toString();
+        final String lastname = lname.getText().toString();
+        final String email1 = email.getText().toString();
+        final String mobile = contact.getText().toString();
+        final String tid= id.getText().toString();
+        final String dobb = dob.getText().toString();
+       final String salary1=salary.getText().toString();
+       final String days=shifts.getText().toString();
+       final String timing=time.getText().toString();
+       final String dojj=doj.getText().toString();
+       final String genderr = gender.getText().toString();
+        TrainerHelper trainer = new TrainerHelper(genderr,mobile,dobb,dojj,email1,firstname,lastname,salary1,days,timing,tid);
+        reference.child(tid).setValue(trainer);
+        sharedPrefs.createTrainerDataSession(trainer);
+
+    }
+
     private void bindData() {
         fname.setText(data.getFname());
         lname.setText(data.getLname());
         gender.setText(data.getGender());
-        password.setText(data.get);,email,address,contact,id,salary,shifts,time
+        email.setText(data.getEmail());
+        contact.setText(data.getContact());
+        id.setText(data.getTid());
+        salary.setText(data.getSalary());
+        shifts.setText(data.getShiftdays());
+        time.setText(data.getShifttimings());
+        dob.setText(data.getDob());
+        doj.setText(data.getDoj());
 
     }
 

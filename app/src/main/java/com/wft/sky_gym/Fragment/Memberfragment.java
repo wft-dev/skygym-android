@@ -7,7 +7,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import androidx.annotation.NonNull;
@@ -34,13 +36,14 @@ public class Memberfragment extends Fragment {
     NewMemberAdapter adapter;
     ArrayList<MemberHelper> memberHelperList=new ArrayList<>();
     DatabaseReference databaseReference;
-
+LinearLayout layout;
+View view;
     ImageView add,filter;
     Activity context;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view= inflater.inflate(R.layout.fragment_member,container,false);
+         view= inflater.inflate(R.layout.fragment_member,container,false);
         init(view);
         context=getActivity();
         setData();
@@ -51,7 +54,7 @@ public class Memberfragment extends Fragment {
         add=view.findViewById(R.id.add);
         filter=view.findViewById(R.id.filter);
         filterdrop=view.findViewById(R.id.filterdrop);
-
+layout=view.findViewById(R.id.layout);
       recyclerView= view.findViewById(R.id.memberlistrecycler);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
@@ -80,6 +83,13 @@ filter.setOnClickListener(new View.OnClickListener() {
     public void onClick(View view) {
         filterdrop.setVisibility(View.VISIBLE);
 
+
+    }
+});
+layout.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        hideKeyboard();
 
     }
 });
@@ -121,6 +131,10 @@ filter.setOnClickListener(new View.OnClickListener() {
             }
         });
 
+    }
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 }
 

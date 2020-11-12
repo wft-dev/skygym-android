@@ -71,6 +71,7 @@ contact= findViewById(R.id.contact);
 address=findViewById(R.id.address);
 visits=findViewById(R.id.visits);
 gender=findViewById(R.id.gender);
+         bindData();
 update.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -125,6 +126,7 @@ update.setOnClickListener(new View.OnClickListener() {
             refrence.child(Fname).setValue(visitors);
             SharedPrefs sharedPreferences = new SharedPrefs(AddVisitor.this);
             sharedPreferences.createVisitorDataSession(visitors);
+            updateData();
             Intent i= new Intent(AddVisitor.this, HomeAdmin.class);
             startActivity(i);
         }
@@ -180,6 +182,36 @@ update.setOnClickListener(new View.OnClickListener() {
             });
 
         }
+    private void updateData() {
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Visitor");
+
+        final String firstname = fname.getText().toString();
+        final String lastname = lname.getText().toString();
+        final String email1 = email.getText().toString();
+        final String mobile = contact.getText().toString();
+        final String dovv = dov.getText().toString();
+       final String add=address.getText().toString();
+       final String visit= visits.getText().toString();
+        final String dojj=doj.getText().toString();
+        final String genderr = gender.getText().toString();
+        VisitorHelper visitor = new VisitorHelper(firstname,lastname,email1,add,visit,dojj,dovv,genderr,mobile);
+        reference.child(firstname).setValue(visitor);
+        sharedPrefs.createVisitorDataSession(visitor);
+
+    }
+    private void bindData() {
+        fname.setText(data.getFname());
+        lname.setText(data.getLname());
+        gender.setText(data.getGender());
+        email.setText(data.getEmail());
+        contact.setText(data.getContact());
+        dov.setText(data.getDov());
+        visits.setText(data.getVisits());
+       address.setText(data.getAddress());
+        doj.setText(data.getDoj());
+
+    }
 
         private void hideKeyboard(View view) {
             InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

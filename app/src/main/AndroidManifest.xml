@@ -32,6 +32,8 @@
         <activity android:name=".Admin.ViewMembership"/>
         <activity android:name=".Admin.TrainerAttendance"/>
         <activity android:name=".Admin.ViewMember"/>
+        <activity android:name=".Admin.CurrentMembershipDetail"/>
+        <activity android:name=".Admin.Purchasescreen"/>
 
 
     </application>
