@@ -35,8 +35,8 @@ import java.util.regex.Pattern;
 public class AddVisitor extends AppCompatActivity {
     DatePickerDialog picker;
     LinearLayout l1;
-TextView doj, dov;
-Button update;
+     TextView doj, dov;
+     Button update;
     DatabaseReference refrence;
     VisitorHelper data;
     FirebaseStorage storage;
@@ -44,6 +44,7 @@ Button update;
     FirebaseDatabase firebaseDatabase;
     SharedPrefs sharedPrefs;
 EditText fname,lname,email,contact,address,visits, gender;
+String Fname,Lname,Contact,Email,Address,Visits,Gender,Doj,Dov;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
     String MobilePattern = "[0-9]{10}";
         @Override
@@ -54,8 +55,6 @@ EditText fname,lname,email,contact,address,visits, gender;
             this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//enable full screen
             setContentView(R.layout.addvisitor);
             sharedPrefs = new SharedPrefs(AddVisitor.this);
-
-
             data = sharedPrefs.getVisitorData();
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
@@ -71,7 +70,29 @@ contact= findViewById(R.id.contact);
 address=findViewById(R.id.address);
 visits=findViewById(R.id.visits);
 gender=findViewById(R.id.gender);
-         bindData();
+Fname=getIntent().getStringExtra("fname");
+Lname=getIntent().getStringExtra("lname");
+Contact=getIntent().getStringExtra("contact");
+Email= getIntent().getStringExtra("email");
+Address= getIntent().getStringExtra("add");
+Visits= getIntent().getStringExtra("visits");
+Gender=getIntent().getStringExtra("gender");
+Doj=getIntent().getStringExtra("doj");
+Dov=getIntent().getStringExtra("dov");
+fname.setText(Fname);
+lname.setText(Lname);
+email.setText(Email);
+contact.setText(Contact);
+address.setText(Address);
+visits.setText(Visits);
+gender.setText(Gender);
+doj.setText(Doj);
+dov.setText(Dov);
+
+
+
+
+       //  bindData();
 update.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
@@ -122,12 +143,12 @@ update.setOnClickListener(new View.OnClickListener() {
             dov.startAnimation(shake);
         }
         else {
-            VisitorHelper visitors=new VisitorHelper(Fname,Lname,Email,Address,Visits,Doj,Dov,Gender,Contact) ;
+            Intent i= new Intent(AddVisitor.this, HomeAdmin.class);
+            VisitorHelper visitors=new VisitorHelper(Fname,Lname,Email,Address,Visits,Doj,Dov,Gender,Contact);
             refrence.child(Fname).setValue(visitors);
             SharedPrefs sharedPreferences = new SharedPrefs(AddVisitor.this);
             sharedPreferences.createVisitorDataSession(visitors);
             updateData();
-            Intent i= new Intent(AddVisitor.this, HomeAdmin.class);
             startActivity(i);
         }
     }
@@ -198,20 +219,19 @@ update.setOnClickListener(new View.OnClickListener() {
         VisitorHelper visitor = new VisitorHelper(firstname,lastname,email1,add,visit,dojj,dovv,genderr,mobile);
         reference.child(firstname).setValue(visitor);
         sharedPrefs.createVisitorDataSession(visitor);
-
     }
-    private void bindData() {
-        fname.setText(data.getFname());
-        lname.setText(data.getLname());
-        gender.setText(data.getGender());
-        email.setText(data.getEmail());
-        contact.setText(data.getContact());
-        dov.setText(data.getDov());
-        visits.setText(data.getVisits());
-       address.setText(data.getAddress());
-        doj.setText(data.getDoj());
-
-    }
+//    private void bindData() {
+//        fname.setText(data.getFname());
+//        lname.setText(data.getLname());
+//        gender.setText(data.getGender());
+//        email.setText(data.getEmail());
+//        contact.setText(data.getContact());
+//        dov.setText(data.getDov());
+//        visits.setText(data.getVisits());
+//       address.setText(data.getAddress());
+//        doj.setText(data.getDoj());
+//
+//    }
 
         private void hideKeyboard(View view) {
             InputMethodManager in = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);

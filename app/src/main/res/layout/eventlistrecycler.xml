@@ -22,11 +22,12 @@
             android:layout_marginLeft="60dp"
             android:layout_centerInParent="true"
             android:src="@drawable/ic_baseline_delete_24"
-            android:backgroundTint="@color/white"/>
+            android:background="@color/white"/>
 
 
     </RelativeLayout>
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="130dp"
         android:background="@drawable/border1"
@@ -74,7 +75,7 @@ it include in"/>
             android:textSize="15dp"
             android:text="1:30pm"/>
         <TextView
-            android:id="@+id/etime"
+            android:id="@+id/edate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/description"
@@ -86,9 +87,10 @@ it include in"/>
             android:textStyle="bold"
             android:text="End Time"/>
         <TextView
+            android:id="@+id/etime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/etime"
+            android:layout_below="@+id/edate"
             android:layout_toRightOf="@+id/stime"
             android:layout_marginLeft="75dp"
             android:textStyle="bold"

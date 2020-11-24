@@ -30,11 +30,12 @@ import com.wft.sky_gym.R;
 
 import java.util.ArrayList;
 
-public class Memberfragment extends Fragment {
+public class Memberfragment extends Fragment implements NewMemberAdapter.RecyclerViewClickListener {
     RecyclerView recyclerView;
     RelativeLayout filterdrop;
     NewMemberAdapter adapter;
     ArrayList<MemberHelper> memberHelperList=new ArrayList<>();
+    NewMemberAdapter.RecyclerViewClickListener mrecyclerviewclicklistner;
     DatabaseReference databaseReference;
 LinearLayout layout;
 View view;
@@ -54,8 +55,9 @@ View view;
         add=view.findViewById(R.id.add);
         filter=view.findViewById(R.id.filter);
         filterdrop=view.findViewById(R.id.filterdrop);
-layout=view.findViewById(R.id.layout);
+//layout=view.findViewById(R.id.layout);
       recyclerView= view.findViewById(R.id.memberlistrecycler);
+//      adapter= new NewMemberAdapter(context,memberHelperList,this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 //        FirebaseRecyclerOptions<MemberHelper> options =
@@ -86,13 +88,13 @@ filter.setOnClickListener(new View.OnClickListener() {
 
     }
 });
-layout.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View v) {
-        hideKeyboard();
-
-    }
-});
+//layout.setOnClickListener(new View.OnClickListener() {
+//    @Override
+//    public void onClick(View v) {
+//        hideKeyboard();
+//
+//    }
+//});
 
 
     }
@@ -118,8 +120,9 @@ layout.setOnClickListener(new View.OnClickListener() {
                     memberHelperList.add(data);
 
 
+
                 }
-                adapter=new NewMemberAdapter(getActivity(),memberHelperList);
+                adapter=new NewMemberAdapter(getActivity(),memberHelperList, mrecyclerviewclicklistner);
                 recyclerView.setAdapter(adapter);
 
             }
@@ -135,6 +138,14 @@ layout.setOnClickListener(new View.OnClickListener() {
     private void hideKeyboard() {
         InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(Activity.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+    }
+
+
+
+    @Override
+    public void recyclerViewListClicked(int position) {
+
+
     }
 }
 

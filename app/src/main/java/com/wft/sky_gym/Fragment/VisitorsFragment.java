@@ -35,6 +35,7 @@ public class VisitorsFragment  extends Fragment {
     RecyclerView recyclerView;
     VisitorListAdapter adapter;
     ArrayList<VisitorHelper> visitorHelperArrayList=new ArrayList<>();
+
     ImageView add;
     Activity context;
 
@@ -44,6 +45,7 @@ public class VisitorsFragment  extends Fragment {
         View view = inflater.inflate(R.layout.fragment_visitors, container, false);
         init(view);
         context = getActivity();
+        setData();
         return view;
     }
 

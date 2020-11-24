@@ -27,6 +27,7 @@
 
     </RelativeLayout>
     <LinearLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"

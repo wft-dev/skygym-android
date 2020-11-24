@@ -27,12 +27,12 @@ public class MemberAttendance  extends AppCompatActivity {
         getSupportActionBar().hide();//hide the title bar
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);//enable full screen
         setContentView(R.layout.memberattenacescreen);
-        date=findViewById(R.id.date);
+      //  date=findViewById(R.id.date);
         check=findViewById(R.id.check);
         startdate=findViewById(R.id.startdate);
         enddate=findViewById(R.id.enddate);
         final Calendar calendar = Calendar.getInstance();
-        date.setOnClickListener(new View.OnClickListener() {
+        check.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Date date1 = calendar.getTime();
@@ -66,7 +66,7 @@ public class MemberAttendance  extends AppCompatActivity {
                 if (!firtdateCheck.toString().equalsIgnoreCase(currentCheckdate)) {
                     firtdate = "1" + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
                 }
-                if (!lastdateCheck.toString().equalsIgnoreCase(currentCheckdate)) {
+                if (!lastdateCheck.toString().equalsIgnoreCase(currentCheckdate)){
                     int ma = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
                     lastdate = String.valueOf(ma) + "/" + calendar.get(Calendar.MONTH) + "/" + calendar.get(Calendar.YEAR);
                 }

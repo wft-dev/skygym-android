@@ -11,6 +11,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -30,12 +31,14 @@ public class AddEvent extends AppCompatActivity {
     EditText title,details,stime,etime;
     TextView date;
 Button update;
+ImageView btn;
     DatabaseReference refrence;
     EventHelper data;
     FirebaseStorage storage;
     StorageReference storageReference;
     FirebaseDatabase firebaseDatabase;
     SharedPrefs sharedPrefs;
+    String Title,Details,Date,Stime,Etime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -51,12 +54,30 @@ stime=findViewById(R.id.stime);
 etime=findViewById(R.id.etime);
 date=findViewById(R.id.date);
 update=findViewById(R.id.update);
+btn=findViewById(R.id.btn);
+        Title=getIntent().getStringExtra("title");
+        Details=getIntent().getStringExtra("detail");
+        Date=getIntent().getStringExtra("date");
+        Stime=getIntent().getStringExtra("stime");
+        Etime=getIntent().getStringExtra("etime");
+        title.setText(Title);
+        details.setText(Details);
+        date.setText(Date);
+        stime.setText(Stime);
+        etime.setText(Etime);
 
         data = sharedPrefs.getEventData();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("Event");
-        bindData();
+//        bindData();
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i= new Intent(AddEvent.this,HomeAdmin.class);
+                startActivity(i);
+            }
+        });
        update.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -90,6 +111,7 @@ update=findViewById(R.id.update);
                    EventHelper event=new EventHelper(name,doe,detail,start,end);
                    refrence.child(name).setValue(event);
                    SharedPrefs sharedPreferences = new SharedPrefs(AddEvent.this);
+                   updateData();
                    sharedPreferences.createEventDataSession(event);
                    Intent i= new Intent(AddEvent.this, HomeAdmin.class);
                    startActivity(i);
@@ -127,6 +149,22 @@ update=findViewById(R.id.update);
         date.setText(data.getDate());
         stime.setText(data.getSdate());
         etime.setText(data.getEdate());
+    }
+    public void updateData() {
+
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Event");
+
+        final String Title = title.getText().toString();
+        final String Detail = details.getText().toString();
+        final String Date = date.getText().toString();
+        final String Stime = stime.getText().toString();
+        final String Etime = etime.getText().toString();
+
+        EventHelper eventHelper = new EventHelper(Title,Date,Detail,Stime,Etime);
+
+        reference.child(Title).setValue(eventHelper);
+        sharedPrefs.createEventDataSession(eventHelper);
     }
 
 

@@ -121,6 +121,7 @@
                 android:orientation="horizontal"
                 android:layout_marginTop="5dp">
                 <ImageView
+                    android:id="@+id/call"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/call"/>

@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -80,7 +81,7 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
 
             holder.price.setText(model.getAmount());
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 MembershipHelper membershipHelper = membershipHelperArrayList.get(position);
@@ -104,11 +105,12 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-
+RelativeLayout layout;
         TextView name,description,date1, date2,price;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.name);
+            layout=itemView.findViewById(R.id.layout);
             description=itemView.findViewById(R.id.description);
             date1=itemView.findViewById(R.id.date1);
             date2=itemView.findViewById(R.id.date2);

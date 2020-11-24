@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -77,7 +78,7 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
 //
 //            holder.dov.setText(model.getDov());
 //        }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 VisitorHelper visitorHelper = visitorHelperArrayList.get(position);
@@ -92,8 +93,6 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
                 intent.putExtra("gender",visitorHelper.getGender());
                 intent.putExtra("add",visitorHelper.getAddress());
                 intent.putExtra("visits",visitorHelper.getVisits());
-                intent.putExtra("address",visitorHelper.getAddress());
-
                 context.startActivity(intent);
 
             }
@@ -109,15 +108,15 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
-
-        TextView name,contact,dov,doj,trainer;
+LinearLayout layout;
+        TextView name,contact,dov,doj;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.name);
             contact=itemView.findViewById(R.id.contact);
             doj=itemView.findViewById(R.id.doj);
             dov=itemView.findViewById(R.id.dov);
-            trainer=itemView.findViewById(R.id.trainer);
+            layout=itemView.findViewById(R.id.layout);
 
 
         }

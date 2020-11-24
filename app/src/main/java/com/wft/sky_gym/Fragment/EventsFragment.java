@@ -47,7 +47,7 @@ public class EventsFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_events, container, false);
         init(view);
         context = getActivity();
-setData();
+        setData();
         return view;
     }
 

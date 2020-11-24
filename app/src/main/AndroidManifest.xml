@@ -4,6 +4,7 @@
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
 
     <application
         android:allowBackup="true"
@@ -30,6 +31,7 @@
         <activity android:name=".Admin.AddTrainer"/>
         <activity android:name=".Admin.AddVisitor"/>
         <activity android:name=".Admin.ViewMembership"/>
+        <activity android:name=".Admin.MemberAttendance"/>
         <activity android:name=".Admin.TrainerAttendance"/>
         <activity android:name=".Admin.ViewMember"/>
         <activity android:name=".Admin.CurrentMembershipDetail"/>

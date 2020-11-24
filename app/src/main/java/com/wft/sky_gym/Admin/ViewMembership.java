@@ -37,7 +37,7 @@ public class ViewMembership extends AppCompatActivity {
     SharedPrefs sharedPrefs;
     MembershipHelper data;
     DatePickerDialog picker;
-
+String Title,Amount,Detail,Startdate,Enddate;
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);//will hide the title
@@ -58,7 +58,17 @@ public class ViewMembership extends AppCompatActivity {
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("MembershipPlan");
-bindData();
+Title=getIntent().getStringExtra("title");
+Amount=getIntent().getStringExtra("amount");
+Detail=getIntent().getStringExtra("detail");
+Startdate=getIntent().getStringExtra("sdate");
+Enddate=getIntent().getStringExtra("edate");
+title.setText(Title);
+details.setText(Detail);
+startdate.setText(Startdate);
+amount.setText(Amount);
+enddate.setText(Enddate);
+
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

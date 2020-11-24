@@ -76,7 +76,16 @@ addmship.setOnClickListener(new View.OnClickListener() {
 attend.setOnClickListener(new View.OnClickListener() {
     @Override
     public void onClick(View v) {
+        Intent i =new Intent(ViewMember.this,MemberAttendance.class);
+        startActivity(i);
 
+    }
+});
+purchase.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View v) {
+        Intent i = new Intent(ViewMember.this,Purchasescreen.class);
+        startActivity(i);
     }
 });
     }
