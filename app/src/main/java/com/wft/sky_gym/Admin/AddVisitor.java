@@ -55,7 +55,7 @@ String Fname,Lname,Contact,Email,Address,Visits,Gender,Doj,Dov;
             this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);//enable full screen
             setContentView(R.layout.addvisitor);
             sharedPrefs = new SharedPrefs(AddVisitor.this);
-            data = sharedPrefs.getVisitorData();
+            data=sharedPrefs.getVisitorData();
             storage = FirebaseStorage.getInstance();
             storageReference = storage.getReference();
             refrence = FirebaseDatabase.getInstance().getReference().child("Visitor");
@@ -148,7 +148,7 @@ update.setOnClickListener(new View.OnClickListener() {
             refrence.child(Fname).setValue(visitors);
             SharedPrefs sharedPreferences = new SharedPrefs(AddVisitor.this);
             sharedPreferences.createVisitorDataSession(visitors);
-            updateData();
+            updateDataVisitor();
             startActivity(i);
         }
     }
@@ -203,7 +203,7 @@ update.setOnClickListener(new View.OnClickListener() {
             });
 
         }
-    private void updateData() {
+    private void updateDataVisitor() {
         firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Visitor");
 

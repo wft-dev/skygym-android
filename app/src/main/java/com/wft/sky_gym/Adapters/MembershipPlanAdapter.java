@@ -106,6 +106,7 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
 
     class MyViewHolder extends RecyclerView.ViewHolder{
 RelativeLayout layout;
+ImageView delete;
         TextView name,description,date1, date2,price;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -115,6 +116,7 @@ RelativeLayout layout;
             date1=itemView.findViewById(R.id.date1);
             date2=itemView.findViewById(R.id.date2);
             price=itemView.findViewById(R.id.price);
+            delete=itemView.findViewById(R.id.delete);
 
 
         }

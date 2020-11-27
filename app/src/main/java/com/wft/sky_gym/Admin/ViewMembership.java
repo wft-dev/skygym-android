@@ -52,9 +52,7 @@ String Title,Amount,Detail,Startdate,Enddate;
         enddate =findViewById(R.id.enddate);
         done= findViewById(R.id.done);
         sharedPrefs = new SharedPrefs(ViewMembership.this);
-
-
-        data = sharedPrefs.getMembershipData();
+        data=sharedPrefs.getMembershipData();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         refrence = FirebaseDatabase.getInstance().getReference().child("MembershipPlan");
@@ -102,7 +100,7 @@ enddate.setText(Enddate);
                     refrence.child(name).setValue(membership);
                     SharedPrefs sharedPreferences = new SharedPrefs(ViewMembership.this);
                     sharedPreferences.createMembershipDataSession(membership);
-                    updateData();
+                    updateDataMembership();
                     Intent i= new Intent(ViewMembership.this, HomeAdmin.class);
                     startActivity(i);
 
@@ -150,7 +148,7 @@ enddate.setText(Enddate);
         });
 
     }
-    private void updateData() {
+    private void updateDataMembership() {
         firebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MembershipPlan");
 
@@ -166,13 +164,13 @@ enddate.setText(Enddate);
 
     }
 
-    private void bindData() {
-        title.setText(data.getTitle());
-        details.setText(data.getDescription());
-        startdate.setText(data.getSdate());
-        enddate.setText(data.getEdate());
-        amount.setText(data.getAmount());
-
-    }
+//    private void bindData() {
+//        title.setText(data.getTitle());
+//        details.setText(data.getDescription());
+//        startdate.setText(data.getSdate());
+//        enddate.setText(data.getEdate());
+//        amount.setText(data.getAmount());
+//
+//    }
 
 }

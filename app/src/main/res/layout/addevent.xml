@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:orientation="vertical"
+    android:id="@+id/screen"
     android:layout_height="match_parent">
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -144,7 +145,7 @@
                 android:textStyle="bold"
                 android:textColor="@color/black"
                 android:text="Event Start Time"/>
-            <EditText
+            <TextView
                 android:id="@+id/stime"
                 android:inputType="text"
                 android:layout_width="wrap_content"
@@ -172,7 +173,7 @@
                 android:textColor="@color/black"
                 android:text="Event End Time"
                 />
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="40dp"
                 android:background="@drawable/border1"

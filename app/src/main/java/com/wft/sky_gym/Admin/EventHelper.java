@@ -16,7 +16,6 @@ public class EventHelper {
         this.detail= detail;
         this.sdate= sdate;
         this.edate= edate;
-
     }
 
     public String getTitle() {

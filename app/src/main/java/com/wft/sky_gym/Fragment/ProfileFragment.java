@@ -3,6 +3,7 @@ package com.wft.sky_gym.Fragment;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -21,9 +22,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,24 +45,29 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.wft.sky_gym.Admin.AddEvent;
+import com.wft.sky_gym.Admin.AddTrainer;
 import com.wft.sky_gym.Admin.HomeAdmin;
 import com.wft.sky_gym.Admin.UsersHelperClass;
 import com.wft.sky_gym.R;
 import com.wft.sky_gym.SharedPrefs;
 
 import java.io.IOException;
+import java.util.Calendar;
 import java.util.UUID;
 
 import static android.app.Activity.RESULT_CANCELED;
 import static android.app.Activity.RESULT_OK;
 
 public class ProfileFragment extends Fragment {
+    DatePickerDialog picker;
     ImageView pic;
     FirebaseAuth auth;
     Button update;
     DatabaseReference refrence;
     FirebaseDatabase firebaseDatabase;
-    EditText gymname, gymid, gymadd, fname, lname, gender, contact, emailt, password, dob;
+    EditText gymname, gymid, gymadd, fname, lname, gender, contact, emailt, password;
+    TextView dob;
     ImageView camera;
     LinearLayout l1;
     SharedPrefs sharedPrefs;
@@ -103,6 +111,25 @@ public class ProfileFragment extends Fragment {
         dob = view.findViewById(R.id.dob);
         bindData();
         // read();
+        dob.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(getActivity(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                dob.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+        });
 
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -374,7 +401,7 @@ public class ProfileFragment extends Fragment {
         final String mno = contact.getText().toString();
         final String genderr = gender.getText().toString();
         UsersHelperClass user = new UsersHelperClass(gname, gid, gadd, fn, lnamee, dobb, emaill, pass, mno, genderr);
-
+Toast.makeText(getActivity(),"profile updated successfully",Toast.LENGTH_SHORT).show();
         reference.child(gid).setValue(user);
         sharedPrefs.createUserDataSession(user);
     }
