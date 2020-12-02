@@ -8,10 +8,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wft.sky_gym.Admin.AddTrainer;
 import com.wft.sky_gym.Admin.MemberAttendance;
 import com.wft.sky_gym.Admin.MemberHelper;
@@ -43,44 +46,56 @@ public class MembershipPlanAdapter extends RecyclerView.Adapter<MembershipPlanAd
 
 
     @Override
-    public void onBindViewHolder(@NonNull MembershipPlanAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final MembershipPlanAdapter.MyViewHolder holder, final int position) {
 
-        MembershipHelper model=membershipHelperArrayList.get(position);
-        if (model.getTitle()==null){
+        MembershipHelper model = membershipHelperArrayList.get(position);
+        if (model.getTitle() == null) {
             holder.name.setText("N/A");
-        }
-        else {
+        } else {
             holder.name.setText(model.getTitle());
 
         }
-        if (model.getDescription()==null){
+        if (model.getDescription() == null) {
             holder.description.setText("N/A");
-        }
-        else {
+        } else {
 
             holder.description.setText(model.getDescription());
         }
-        if (model.  getSdate()==null){
+        if (model.getSdate() == null) {
             holder.date1.setText("N/A");
-        }
-        else {
+        } else {
 
             holder.date1.setText(model.getSdate());
         }
-        if (model.  getEdate()==null){
+        if (model.getEdate() == null) {
             holder.date2.setText("N/A");
-        }
-        else {
+        } else {
 
             holder.date2.setText(model.getSdate());
         }
-        if (model.  getAmount()==null){
+        if (model.getAmount() == null) {
             holder.price.setText("N/A");
-        }
-        else {
+        } else {
 
             holder.price.setText(model.getAmount());
         }
+
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("MembershipPlan");
+                                                 final String Title = holder.name.getText().toString();
+//                final String Detail = holder.description.getText().toString();
+//                final String Date = holder.date.getText().toString();
+//                final String Stime = holder.stime.getText().toString();
+//                final String Etime = holder.etime.getText().toString();
+//                EventHelper eventHelper = new EventHelper(Title,Date,Detail,Stime,Etime);
+                                                 reference.child(Title).removeValue();
+                                                 membershipHelperArrayList.remove(position);
+                                                 Toast.makeText(context, "Data Deleted successfully", Toast.LENGTH_SHORT).show();
+                                                 notifyDataSetChanged();
+                                             }
+                                         });
         holder.layout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

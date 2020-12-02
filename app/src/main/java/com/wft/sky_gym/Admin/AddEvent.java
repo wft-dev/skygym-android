@@ -91,12 +91,9 @@ LinearLayout screen;
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                screen.setVisibility(View.GONE);
-            Fragment fragment = null;
-                fragment = new EventsFragment();
-                FragmentManager fragmentManager = getSupportFragmentManager();
-                fragmentManager.beginTransaction().replace(R.id.screen, fragment).commit();
-
+//               final FragmentTransaction ft= getSupportFragmentManager().beginTransaction();
+//               ft.replace(R.id.screen,new EventsFragment(),"event");
+//               ft.commit();
 
 //                getSupportFragmentManager().beginTransaction().add(R.id.fragment, new EventsFragment()).commit();
 //                FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
@@ -104,8 +101,8 @@ LinearLayout screen;
 //                FragmentManager fm=getSupportFragmentManager();
 //                EventsFragment fragment= new EventsFragment();
 //                fm.beginTransaction().replace(fragment).commit();
-//                Intent i= new Intent(AddEvent.this,HomeAdmin.class);
-//                startActivity(i);
+                Intent i= new Intent(AddEvent.this,HomeAdmin.class);
+                startActivity(i);
 
 
             }

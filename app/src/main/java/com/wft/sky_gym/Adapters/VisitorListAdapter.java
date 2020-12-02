@@ -5,12 +5,16 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.wft.sky_gym.Admin.AddTrainer;
 import com.wft.sky_gym.Admin.AddVisitor;
 import com.wft.sky_gym.Admin.TrainerHelper;
@@ -40,7 +44,7 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
 
 
     @Override
-    public void onBindViewHolder(@NonNull VisitorListAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final VisitorListAdapter.MyViewHolder holder, final int position) {
 
         VisitorHelper model=visitorHelperArrayList.get(position);
         if (model.getFname()==null){
@@ -71,6 +75,22 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
 
             holder.dov.setText(model.getDov());
         }
+        holder.delete.setOnClickListener(new View.OnClickListener() {
+                                             @Override
+                                             public void onClick(View view) {
+                                                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Visitor");
+                                                 final String Title = holder.name.getText().toString();
+//                final String Detail = holder.description.getText().toString();
+//                final String Date = holder.date.getText().toString();
+//                final String Stime = holder.stime.getText().toString();
+//                final String Etime = holder.etime.getText().toString();
+//                EventHelper eventHelper = new EventHelper(Title,Date,Detail,Stime,Etime);
+                                                 reference.child(Title).removeValue();
+                                                 visitorHelperArrayList.remove(position);
+                                                 Toast.makeText(context, "Data Deleted successfully", Toast.LENGTH_SHORT).show();
+                                                 notifyDataSetChanged();
+                                             }
+                                         });
 //        if (model.get()==null){
 //            holder.dov.setText("N/A");
 //        }
@@ -110,6 +130,7 @@ public class VisitorListAdapter  extends RecyclerView.Adapter<VisitorListAdapter
     class MyViewHolder extends RecyclerView.ViewHolder{
 LinearLayout layout;
         TextView name,contact,dov,doj;
+        ImageView delete;
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.name);
@@ -117,6 +138,7 @@ LinearLayout layout;
             doj=itemView.findViewById(R.id.doj);
             dov=itemView.findViewById(R.id.dov);
             layout=itemView.findViewById(R.id.layout);
+            delete=itemView.findViewById(R.id.delete);
 
 
         }

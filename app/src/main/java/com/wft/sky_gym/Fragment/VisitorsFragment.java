@@ -30,6 +30,8 @@ import com.wft.sky_gym.Admin.VisitorHelper;
 import com.wft.sky_gym.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class VisitorsFragment  extends Fragment {
     RecyclerView recyclerView;
@@ -78,6 +80,12 @@ public class VisitorsFragment  extends Fragment {
 
                 }
                 adapter=new VisitorListAdapter(getActivity(),visitorHelperArrayList);
+                Collections.sort(visitorHelperArrayList, new Comparator<VisitorHelper>() {
+                    @Override
+                    public int compare(VisitorHelper o1, VisitorHelper o2) {
+                        return o1.getDov().compareTo((o2.getDov()));
+                    }
+                });
                 recyclerView.setAdapter(adapter);
 
             }

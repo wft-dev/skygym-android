@@ -28,6 +28,9 @@ import com.wft.sky_gym.Admin.ViewMembership;
 import com.wft.sky_gym.R;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class MembershipplanFragment  extends Fragment {
     RecyclerView recyclerView;
@@ -78,6 +81,12 @@ public class MembershipplanFragment  extends Fragment {
 
                 }
                 adapter=new MembershipPlanAdapter(getActivity(),membershipHelperArrayList);
+                Collections.sort(membershipHelperArrayList, new Comparator<MembershipHelper>() {
+                    @Override
+                    public int compare(MembershipHelper o1, MembershipHelper o2) {
+                        return o1.getSdate().compareTo((o2.getEdate()));
+                    }
+                });
                 recyclerView.setAdapter(adapter);
 
             }

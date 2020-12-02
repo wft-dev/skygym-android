@@ -36,6 +36,9 @@ public class SharedPrefs {
 
     // User name (make variable public to access from outside)
     public static final String KEY_NAME = "userData";
+    public static final String MEMBERSHIP_KEY = "Membershipdata";
+    public static final String VISITOR_KEY = "visitor data";
+    public static final String EVENT_KEY = "event data";
 
 
     // Constructor
@@ -53,19 +56,19 @@ public void  createMemberDataSession(MemberHelper member){
     public void  createVisitorDataSession(VisitorHelper visitor){
         Gson gson = new Gson();
         String json = gson.toJson(visitor);
-        editor.putString(KEY_NAME, json);
+        editor.putString(VISITOR_KEY, json);
         editor.commit();
     }
     public void  createEventDataSession(EventHelper event){
         Gson gson = new Gson();
         String json = gson.toJson(event);
-        editor.putString(KEY_NAME, json);
+        editor.putString(EVENT_KEY, json);
         editor.commit();
     }
     public void  createMembershipDataSession(MembershipHelper membership){
         Gson gson = new Gson();
         String json = gson.toJson(membership);
-        editor.putString(KEY_NAME, json);
+        editor.putString(MEMBERSHIP_KEY, json);
         editor.commit();
     }
     public void  createTrainerDataSession(TrainerHelper trainer){
@@ -137,7 +140,7 @@ public void  createMemberDataSession(MemberHelper member){
     }
     public VisitorHelper getVisitorData(){
         Gson gson = new Gson();
-        String json = pref.getString(KEY_NAME, "");
+        String json = pref.getString(VISITOR_KEY, "");
         VisitorHelper obj = gson.fromJson(json, VisitorHelper.class);
         return obj;
 
@@ -151,14 +154,14 @@ public void  createMemberDataSession(MemberHelper member){
     }
     public MembershipHelper getMembershipData(){
         Gson gson = new Gson();
-        String json = pref.getString(KEY_NAME, "");
+        String json = pref.getString(MEMBERSHIP_KEY, "");
         MembershipHelper obj = gson.fromJson(json, MembershipHelper.class);
         return obj;
 
     }
     public EventHelper getEventData(){
         Gson gson = new Gson();
-        String json = pref.getString(KEY_NAME, "");
+        String json = pref.getString(EVENT_KEY, "");
         EventHelper obj = gson.fromJson(json, EventHelper.class);
         return obj;
 

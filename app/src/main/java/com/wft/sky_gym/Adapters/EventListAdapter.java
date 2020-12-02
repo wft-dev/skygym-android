@@ -2,6 +2,7 @@ package com.wft.sky_gym.Adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.service.autofill.CustomDescription;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.ListAdapter;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -34,8 +37,11 @@ import com.wft.sky_gym.R;
 import com.wft.sky_gym.SharedPrefs;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 import static android.content.ContentValues.TAG;
+import static java.util.Collections.sort;
 
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyViewHolder> {
     Context context;
@@ -46,19 +52,19 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
         this.eventHelperArrayList= eventHelperArrayList;
     }
 
+
     @NonNull
     @Override
     public EventListAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View mView = LayoutInflater.from(parent.getContext()).inflate(R.layout.eventlistrecycler, parent, false);
         EventListAdapter.MyViewHolder vh = new EventListAdapter.MyViewHolder(mView);
         return vh;
-
-
     }
 
 
     @Override
     public void onBindViewHolder(@NonNull final EventListAdapter.MyViewHolder holder, final int position) {
+
 
         final EventHelper model=eventHelperArrayList.get(position);
         if (model.getTitle()==null){
@@ -96,6 +102,39 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
 
             holder.date.setText(model.getDate());
         }
+        String Title= holder.name.getText().toString();
+        Query myTopPostsQuery =  FirebaseDatabase.getInstance().getReference("Event").child(Title)
+                .orderByChild("date");
+        myTopPostsQuery.addChildEventListener(new ChildEventListener() {
+            @Override
+            public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onChildRemoved(@NonNull DataSnapshot snapshot) {
+
+            }
+
+            @Override
+            public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+
+        });
+
+
+//eventHelperArrayList.sort(EventHelper.EventHelpersort);
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -109,7 +148,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.MyVi
                 reference.child(Title).removeValue();
                 eventHelperArrayList.remove(position);
                 Toast.makeText(context,"Data Deleted successfully",Toast.LENGTH_SHORT).show();
-
+                notifyDataSetChanged();
 //                DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
 //                Query db = ref.child("Event").child();
 //                db.addValueEventListener(new ValueEventListener() {
